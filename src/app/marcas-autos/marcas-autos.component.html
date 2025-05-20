@@ -1,1 +1,30 @@
-<p>marcas-autos works!</p>
+<div class="container py-3">
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modelos de la Marca</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div *ngFor="let modelo of modelos" class="modal-body">
+                    <p>{{modelo.name}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1 >Marcas de Autos</h1>
+    <div class="row g-2">
+        <div *ngFor="let marca of marcas" class="col-12 col-sm-6 col-md-4">
+            <div class="p-2 border-2 rounded-3 border-info bg-dark w-100">
+                <h5 class="text-center fw-bolder text-white text-wrap">{{ marca.name }}</h5>
+                <div class="d-flex justify-content-end btn-container">
+                    <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" (click)="obtenerModelosPorIdMarca(marca.id)">Ver Modelos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { NoticiasComponent } from './noticias/noticias.component';
+import { MarcasAutosComponent } from "./marcas-autos/marcas-autos.component";
 
 @Component({
   selector: 'app-root',
-  imports: [NoticiasComponent],
+  imports: [MarcasAutosComponent],
   styleUrl: './app.component.css',
   template: `
     <main>
       <section>
-        <app-noticias></app-noticias>
+        <app-marcas-autos></app-marcas-autos>
       </section>
     </main>
   `
