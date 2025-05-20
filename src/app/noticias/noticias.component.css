@@ -1,0 +1,18 @@
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  min-height: 200px; /* Altura mínima para uniformidad */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Limita el título a 2 líneas */
+.text-truncate-multiline {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

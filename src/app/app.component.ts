@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NoticiasComponent } from './noticias/noticias.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [NoticiasComponent],
+  styleUrl: './app.component.css',
+  template: `
+    <main>
+      <section>
+        <app-noticias></app-noticias>
+      </section>
+    </main>
+  `
 })
 export class AppComponent {
   title = 'tp-webservice-3305';
