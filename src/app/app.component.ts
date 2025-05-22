@@ -1,18 +1,21 @@
 import { Component } from '@angular/core';
-import { NoticiasComponent } from './noticias/noticias.component';
-import { MarcasAutosComponent } from "./marcas-autos/marcas-autos.component";
-import { ConversorComponent } from "./conversor/conversor.component";
+import { HeaderComponent } from "./layout/header/header.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [ConversorComponent],
+  imports: [RouterModule, HeaderComponent],
   styleUrl: './app.component.css',
   template: `
+    <header>
+      <app-header></app-header>
+    </header>
     <main>
       <section>
-        <app-conversor></app-conversor>
+        <router-outlet></router-outlet>
       </section>
     </main>
+    <footer></footer>
   `
 })
 export class AppComponent {
