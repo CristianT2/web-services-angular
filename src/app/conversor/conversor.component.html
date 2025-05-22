@@ -1,1 +1,42 @@
-<p>conversor works!</p>
+<div class="container my-3 py-3 rounded-2 bg-dark col-md-6">
+    <h4 class="text-center py-3 text-white" style="background-color: #151568;">Conversor de Divisas</h4>
+    <form class="d-flex flex-column px-4 py-3">
+        <div class="mb-3">
+            <label for="monto" class="form-label text-white fw-semibold">Cantidad</label>
+            <input type="number" id="monto" class="form-control border-info" [(ngModel)]="monto"
+                name="monto" placeholder="Cantidad">
+        </div>
+        <div class="mb-3">
+            <label for="monedaSeleccionada" class="form-label text-white fw-semibold">Convertir De:</label>
+            <select id="monedaSeleccionada" class="form-select border-info"
+                [(ngModel)]="monedaSeleccionada" name="fromCurrency">
+                <option value="">Selecciona una moneda</option>
+                <option *ngFor="let moneda of monedas" [value]="moneda.code">
+                    {{ moneda.code }} - {{ moneda.name }}
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="monedaAConvertir" class="form-label text-white fw-semibold">Convertir A:</label>
+            <select id="monedaAConvertir" class="form-select border-info"
+                [(ngModel)]="monedaAConvertir" name="toCurrency">
+                <option value="">Selecciona una moneda</option>
+                <option *ngFor="let moneda of monedas" [value]="moneda.code">
+                    {{ moneda.code }} - {{ moneda.name }}
+                </option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="resultado" class="form-label text-white fw-semibold">Resultado</label>
+            <input type="text" id="resultado" class="form-control border-info" [value]="resultado"
+                readonly placeholder="Resultado">
+        </div>
+        <div class="mt-3">
+            <input type="button" class="btn btn-warning py-2 fw-medium w-100 fs-5 fw-semibold" value="Convertir"
+                (click)="convertirMoneda()">
+        </div>
+    </form>
+    <div *ngIf="error" class="alert alert-danger mx-2">
+        {{ error }}
+    </div>
+</div>

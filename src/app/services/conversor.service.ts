@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ConversorService {
 
   private URL_API = 'https://api.apilayer.com/currency_data';
-  private API_KEY = 'tucXORnU83W356th0VYA04CVd8Qe8Dxg';
+  private API_KEY = 'rZSIYVeQu4lRkxkHfjmNSpcmZtdLbb6U';
 
   constructor(private httpClient: HttpClient) { }
 

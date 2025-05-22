@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ConversorService } from '../services/conversor.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-conversor',
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './conversor.component.html',
   styleUrl: './conversor.component.css'
 })
@@ -13,20 +15,21 @@ export class ConversorComponent implements OnInit{
   monto: string = '';
   monedaSeleccionada: string = '';
   monedaAConvertir: string = '';
-  resultado: string = '';
+  resultado: number | null = null;
+  error: string | null = null;
 
 
   constructor(private conversorService: ConversorService){}
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.obtenerMonedas();
   }
 
   //Obtiene todas las monedas
   obtenerMonedas(): void{
     this.conversorService.getCurrencies().subscribe(
       (response: any) => {
-        this.monedas = Object.entries(response.symbols).map(([codigo, nombre ]) => ({ codigo, nombre }));
+        this.monedas = Object.entries(response.currencies).map(([code, name]) => ({ code, name }));
         console.log(this.monedas);
       },
       (error: any) => {

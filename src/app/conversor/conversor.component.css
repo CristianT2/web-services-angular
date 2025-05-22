@@ -1,0 +1,19 @@
+.alert {
+  margin-top: 1rem;
+}
+
+.form-control.bg-dark, .form-select.bg-dark {
+  border-color: #17a2b8; /* border-info */
+}
+
+.form-control.bg-dark::placeholder {
+  color: #6c757d; /* Gris para placeholder */
+}
+
+.form-control[readonly] {
+  opacity: 1;
+}
+
+.form-control, .form-select, .btn {
+  width: 100%; /* Asegura que todos los elementos ocupen el ancho completo */
+}
