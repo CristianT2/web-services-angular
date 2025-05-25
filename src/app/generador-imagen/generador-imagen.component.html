@@ -1,1 +1,46 @@
-<p>generador-imagen works!</p>
+<div class="container my-3 py-4 bg-dark">
+    <h3 class="text-center m-2 py-3 text-white fw-bolder"><i class="bi bi-facebook fs-3"></i> FACEBOOK - POST</h3>
+    <div class="row m-2 mt-4 pt-2">
+        <!-- Formulario -->
+        <div class="col-md-6 mb-3">
+            <div class="card bg-dark border-primary text-white">
+                <div class="card-body">
+                    <form class="d-flex flex-column">
+                        <div class="mb-3">
+                            <label for="tituloPosteo" class="form-label fw-semibold">Título del Post</label>
+                            <input type="text" id="tituloPosteo" class="form-control bg-dark text-white border-primary"
+                                [(ngModel)]="tituloPosteo" name="tituloPosteo"
+                                placeholder="Escribe el título del posteo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label fw-semibold">Contenido del Post</label>
+                            <textarea [(ngModel)]="descripcion" name="descripcion" class="form-control bg-dark text-white border-primary text-white"></textarea>
+                        </div>
+                        <button class="btn btn-primary fw-semibold text-white w-50 mt-2"
+                            (click)="imagen ? resetearFormulario() : obtenerImagen()" [disabled]="cargando">
+                            {{ cargando ? 'Generando...' : (imagen ? 'Resetear' : 'Generar imagen...') }}
+                        </button>
+                    </form>
+                    <div *ngIf="error" class="alert alert-danger mt-3">
+                        {{ error }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Div para la Imagen -->
+        <div class="col-md-6 mb-3">
+            <div class="card bg-dark border-0 text-white text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Imagen Generada</h5>
+                    <div *ngIf="imagen; else noImagen">
+                        <img [src]="imagen" class="img-fluid rounded" alt="Imagen generada"
+                            style="max-width: 100%; height: auto;">
+                    </div>
+                    <ng-template #noImagen>
+                        <div class="text-muted">No hay imagen generada aún.</div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

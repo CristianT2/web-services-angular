@@ -3,6 +3,7 @@ import { NoticiasComponent } from './noticias/noticias.component';
 import { MarcasAutosComponent } from './marcas-autos/marcas-autos.component';
 import { ConversorComponent } from './conversor/conversor.component';
 import { HomeComponent } from './layout/home/home.component';
+import { GeneradorImagenComponent } from './generador-imagen/generador-imagen.component';
 
 export const routes: Routes = [
     {
@@ -24,5 +25,10 @@ export const routes: Routes = [
         path: 'conversor',
         component: ConversorComponent,
         title: 'Conversor de Monedas'
+    },
+    {
+        path: 'generar-imagen',
+        component: GeneradorImagenComponent,
+        title: 'Generardor de Imagenes'
     }
 ];
