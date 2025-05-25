@@ -1,1 +1,53 @@
-<p>clima works!</p>
+<div class="container my-4">
+    <h3 class="text-center mb-4">Consulta de Clima</h3>
+    <!-- Formulario -->
+    <form (ngSubmit)="onSubmit()" class="bg-light p-4 rounded shadow col-md-8 mx-auto">
+        <!-- Buscar por ciudad -->
+        <div class="mb-3">
+            <label for="ciudad" class="form-label fw-bold">Nombre de la ciudad</label>
+            <input type="text" id="ciudad" class="form-control" [(ngModel)]="ciudad" name="ciudad"
+                [disabled]="latitudIngresada || longitudIngresada" (ngModelChange)="onCiudadChange($event)"
+                placeholder="Ej: Madrid, Buenos Aires" />
+        </div>
+        <p class="text-center fw-bold">O</p>
+        <!-- Buscar por coordenadas -->
+        <div class="mb-3 row">
+            <div class="col-md-6">
+                <label for="latitud" class="form-label fw-bold">Latitud</label>
+                <input type="text" id="latitud" class="form-control" [(ngModel)]="latitud" name="latitud"
+                    [disabled]="ciudadIngresada" (ngModelChange)="onLatLonChange()" placeholder="Ej: -34.6037" />
+            </div>
+            <div class="col-md-6">
+                <label for="longitud" class="form-label fw-bold">Longitud</label>
+                <input type="text" id="longitud" class="form-control" [(ngModel)]="longitud" name="longitud"
+                    [disabled]="ciudadIngresada" (ngModelChange)="onLatLonChange()" placeholder="Ej: -58.3816" />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 mt-3">
+            Obtener clima
+        </button>
+    </form>
+
+    <div *ngIf="clima" class="card mt-4 mx-auto shadow bg-dark rounded-4" style="max-width: 400px;">
+        <div class="card-body text-white text-center">
+            <h5 class="card-title mt-2">{{ clima.name }}, {{ clima.sys.country }}</h5>
+
+            <img [src]="'http://openweathermap.org/img/wn/' + clima.weather[0].icon + '@2x.png'"
+                [alt]="clima.weather[0].description" width="100" />
+
+            <h3 class="my-2">{{ clima.main.temp | number:'1.0-0' }}°C</h3>
+            <p class="text-capitalize">{{ clima.weather[0].description }}</p>
+
+            <div class="d-flex justify-content-between mt-3 mb-2">
+                <div>
+                    <i class="bi bi-droplet-fill text-primary"></i>
+                    Humedad: {{ clima.main.humidity }}%
+                </div>
+                <div>
+                    <i class="bi bi-wind text-secondary"></i>
+                    Viento: {{ clima.wind.speed }} m/s
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

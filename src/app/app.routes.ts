@@ -4,6 +4,7 @@ import { MarcasAutosComponent } from './marcas-autos/marcas-autos.component';
 import { ConversorComponent } from './conversor/conversor.component';
 import { HomeComponent } from './layout/home/home.component';
 import { GeneradorImagenComponent } from './generador-imagen/generador-imagen.component';
+import { ClimaComponent } from './clima/clima.component';
 
 export const routes: Routes = [
     {
@@ -30,5 +31,10 @@ export const routes: Routes = [
         path: 'generar-imagen',
         component: GeneradorImagenComponent,
         title: 'Generardor de Imagenes'
-    }
+    },
+    {
+        path: 'clima',
+        component: ClimaComponent,
+        title: 'Clima'
+    },
 ];

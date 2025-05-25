@@ -12,19 +12,22 @@
             <div class="collapse navbar-collapse me-4" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/">Home</a>
+                        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" aria-current="page">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/noticias">Noticias</a>
+                        <a class="nav-link" routerLink="/noticias" routerLinkActive="active" aria-current="page">Noticias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/marcas-autos">Marcas de Autos</a>
+                        <a class="nav-link" routerLink="/marcas-autos" routerLinkActive="active" aria-current="page">Marcas de Autos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/conversor">Conversor de Monedas</a>
+                        <a class="nav-link" routerLink="/conversor" routerLinkActive="active" aria-current="page">Conversor de Monedas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/generar-imagen">Generador de Imagenes</a>
+                        <a class="nav-link" routerLink="/generar-imagen" routerLinkActive="active" aria-current="page">Generador de Imagenes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/clima" routerLinkActive="active" aria-current="page">Clima</a>
                     </li>
                 </ul>
             </div>
