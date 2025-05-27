@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PracticaService } from '../services/practica.service';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-practica',
-  imports: [],
+  imports: [CommonModule, RouterModule],
   templateUrl: './practica.component.html',
   styleUrl: './practica.component.css'
 })
@@ -15,7 +17,7 @@ export class PracticaComponent implements OnInit{
   constructor(private practicaService: PracticaService){}
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.obtenerRecetas();
   }
 
   public obtenerRecetas(): void {

@@ -1,1 +1,47 @@
-<p>practica works!</p>
+<div class="container">
+    <div *ngIf="recetas" class="container mt-5">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Path</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let receta of recetas">
+                    <td>{{ receta.path }}</td>
+                    <td>{{ receta.title }}</td>
+                    <td>
+                        <img [src]="receta.image" alt="">
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" (click)="obtenerDetalles(receta.path)">
+                            Ver Receta
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="detalles" class="container mt-5">
+        <div>
+            <h1>Detalles de la receta</h1>
+            <img [src]="detalles?.['Imagen de la receta']" class="card-img-top" alt="...">
+            <div>
+                <h3>{{detalles?.['Titulo de la preparacion']}}</h3>
+                <p>Ingredientes:</p>
+                <div *ngFor="let ingrediente of detalles?.['Ingredientes']">
+                    <p>{{ingrediente}}</p>
+                </div>
+                <p>Preparacion:</p>
+                <div *ngFor="let paso of detalles?.['Pasos de preparacion']">
+                    <p>{{paso}}</p>
+                </div>
+                <button class="btn btn-primary" (click)="volver()">Volver</button>
+            </div>
+        </div>
+    </div>
+</div>
