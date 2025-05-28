@@ -5,6 +5,7 @@ import { ConversorComponent } from './conversor/conversor.component';
 import { HomeComponent } from './layout/home/home.component';
 import { GeneradorImagenComponent } from './generador-imagen/generador-imagen.component';
 import { ClimaComponent } from './clima/clima.component';
+import { ParcialComponent } from './parcial/parcial.component';
 
 export const routes: Routes = [
     {
@@ -37,4 +38,9 @@ export const routes: Routes = [
         component: ClimaComponent,
         title: 'Clima'
     },
+    {
+        path: 'parcial',
+        component: ParcialComponent,
+        title: 'Parcial'
+    }
 ];

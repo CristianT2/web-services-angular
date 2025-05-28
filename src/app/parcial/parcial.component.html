@@ -1,0 +1,190 @@
+<div class="container">
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Lista de Pilotos</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-between fw-semibold">
+                        <p>Nombre</p>
+                        <p>Posicion</p>
+                    </div>
+                    <div *ngFor="let piloto of pilotos" class="d-flex justify-content-between">
+                        <p>{{ piloto.name }}</p>
+                        <p>{{ piloto.position }}</p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        (click)="salir()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mt-3 mb-3 mx-auto">
+        <div class="card bg-dark border-primary text-white">
+            <div class="card-body">
+                <form class="d-flex flex-column">
+                    <div class="mb-3">
+                        <label for="año" class="form-label fw-semibold">Año</label>
+                        <input type="text" id="año" class="form-control bg-dark text-white border-primary"
+                            [(ngModel)]="anio" name="año" placeholder="Escribe el año">
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex">
+                        <button class="btn btn-primary fw-semibold text-white w-50 mt-2" (click)="obtenerCarreras()">
+                            Obtener Carreras
+                        </button>
+                        <button class="btn btn-primary fw-semibold text-white w-50 mt-2"
+                            (click)="obtenerConstructores(anio)">
+                            Obtener Constructores
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="constructores.length > 0">
+        <h5>Constructores</h5>
+        <p>Primero: {{constructores[0].team_name}}</p>
+        <p>Ultimo: {{constructores[constructores.length -1].team_name}}</p>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cerrar()">Close</button>
+    </div>
+    <div *ngIf="carreras.length > 0" class="container mt-5">
+        <table class="table table-bordered border-black ">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Race ID</th>
+                    <th scope="col">Carreras</th>
+                    <th scope="col">Sesiones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let carrera of carreras">
+                    <td>{{ carrera.race_id }}</td>
+                    <td>{{ carrera.name }}</td>
+                    <td>
+                        <div>
+                            <div *ngFor="let session of carrera.sessions">
+                                {{ session.id }}
+                                <button class="btn btn-outline-info btn-sm ms-3" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" (click)="obtenerPilotos(session.id)">Ver
+                                    informacion</button>
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- <div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID Autor</th>
+                <th scope="col">Nombre del Autor</th>
+                <th scope="col">Foto del Autor </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let autor of autores">
+                <td>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        (click)="obtenerInfoAutor(autor?.['author_id'])">
+                        {{autor?.['author_id']}}
+                    </button>
+                </td>
+                <td>{{autor?.['author_id']}}</td>
+                <td>{{autor?.name}}</td>
+                <td>
+                    <img [src]="autor.image" alt="">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="modal fade modal-dialog-scrollable" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Autor:</strong> {{informacion?.name}}</p>
+                    <p><strong>Biografia:</strong></p>
+                    <br>
+                    <p>{{informacion?.info}}</p>
+                    <div *ngFor="let libro of (informacion?.['author_books'])">
+                        <p><strong>Libro del Autor</strong></p>
+                        <br>
+                        <p> Nombre del libro: {{libro.name}}</p>
+                        <p> Fecha de lanzamiento: {{libro.date | date:'shortDate'}}</p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<!-- En generador-imagen.component.html -->
+<!-- <p>{{ tituloPosteo | uppercase }}</p> -->
+<!-- Si tituloPosteo = "cerdo volador", muestra: CERDO VOLADOR -->
+
+<!-- <p>{{ tituloPosteo | lowercase }}</p> -->
+<!-- Si tituloPosteo = "CERDO Volador", muestra: cerdo volador -->
+
+<!-- <p>{{ tituloPosteo | titlecase }}</p> -->
+<!-- Si tituloPosteo = "cerdo volador", muestra: Cerdo Volador -->
+
+<!-- Suponiendo que tienes un contador de imágenes generadas -->
+<!-- <p>Imágenes generadas: {{ contadorImagenes | number:'1.0-2' }}</p> -->
+<!-- Si contadorImagenes = 5.2, muestra: 5.20 -->
+
+<!-- <p>Progreso: {{ progreso | percent:'1.0-2' }}</p> -->
+<!-- Si progreso = 0.75, muestra: 75.00% -->
+
+<!-- Relacionado con ConversorComponent -->
+<!-- <p>Precio: {{ 200 | currency:'USD':'symbol':'1.2-2' }}</p> -->
+<!-- Muestra: $200.00 -->
+
+<!-- Mostrar fecha de generación de la imagen -->
+<!-- <p>Generada el: {{ fechaGeneracion | date:'dd/MM/yyyy HH:mm' }}</p> -->
+<!-- Si fechaGeneracion = new Date(), muestra: 27/05/2025 16:42 -->
+
+<!-- Depurar la respuesta de la API -->
+<!-- <pre>{{ responseDebug | json }}</pre> -->
+<!-- Si responseDebug = { imageUrl: 'data:image...' }, muestra: { "imageUrl": "data:image..." } -->
+
+<!-- Mostrar los primeros 10 caracteres del título -->
+<!-- <p>{{ tituloPosteo | slice:0:10 }}</p> -->
+<!-- Si tituloPosteo = "Cerdo volador 3D", muestra: Cerdo vola -->
+
+
+<!-- ng generate pipe pipes/truncar -->
+
+<!-- import { Pipe, PipeTransform } from '@angular/core'; -->
+
+<!-- @Pipe({
+  name: 'truncar'
+})
+export class TruncarPipe implements PipeTransform {
+  transform(value: string, longitud: number = 10): string {
+    if (!value) return '';
+    return value.length > longitud ? value.slice(0, longitud) + '...' : value;
+  }
+} -->
+
+<!-- <p>{{ tituloPosteo | truncar:15 }}</p> -->
+<!-- Si tituloPosteo = "Cerdo volador en ciudad futurista", muestra: Cerdo volador... -->
