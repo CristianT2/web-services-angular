@@ -7,6 +7,8 @@ import { GeneradorImagenComponent } from './generador-imagen/generador-imagen.co
 import { ClimaComponent } from './clima/clima.component';
 import { ParcialComponent } from './parcial/parcial.component';
 import { ConversorPostComponent } from './conversor-post/conversor-post.component';
+import { RecuperatorioComponent } from './recuperatorio/recuperatorio.component';
+import { TraductorComponent } from './traductor/traductor.component';
 
 export const routes: Routes = [
     {
@@ -48,5 +50,20 @@ export const routes: Routes = [
         path: 'convertir-post',
         component: ConversorPostComponent,
         title: 'ConvertirPOST'
+    },
+    {
+        path: 'recuperatorio',
+        component: RecuperatorioComponent,
+        title: 'Recuperatorio'
+    },
+    {
+        path: 'traductor',
+        component: TraductorComponent,
+        title: 'Traductor'
+    },
+    {
+        path: 'conversor-post',
+        component: ConversorPostComponent,
+        title: 'Conversor POST'
     }
 ];

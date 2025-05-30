@@ -1,0 +1,51 @@
+<div class="container my-5">
+    <h2 class="text-center mb-4">Traductor de Texto</h2>
+
+    <div class="card shadow p-4">
+        <form>
+
+            <!-- Texto original -->
+            <div class="mb-3">
+                <label for="textoOriginal" class="form-label fw-bold">Texto a traducir</label>
+                <textarea id="textoOriginal" class="form-control" rows="4" [(ngModel)]="texto" name="texto"
+                    placeholder="Ingrese el texto aquí..."></textarea>
+            </div>
+
+            <!-- Idiomas -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="idiomaOrigen" class="form-label fw-bold">Idioma de origen</label>
+                    <select id="idiomaOrigen" class="form-select" [(ngModel)]="idioma" name="idiomaOrigen">
+                        <option value="">Seleccione un idioma</option>
+                        <option *ngFor="let idioma of lenguajes" [value]="idioma.language">
+                            {{ idioma.name }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="idiomaDestino" class="form-label fw-bold">Idioma de destino</label>
+                    <select id="idiomaDestino" class="form-select" [(ngModel)]="idiomaATraducir" name="idiomaDestino">
+                        <option value="">Seleccione un idioma</option>
+                        <option *ngFor="let idioma of lenguajes" [value]="idioma.language">
+                            {{ idioma.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Texto traducido -->
+            <div class="mb-3">
+                <label for="textoTraducido" class="form-label fw-bold">Texto traducido</label>
+                <textarea id="textoTraducido" class="form-control bg-light" rows="4" readonly [(ngModel)]="textoTraducido"
+                    name="resultado"></textarea>
+            </div>
+
+            <!-- Botones -->
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-primary" (click)="traducir()">Traducir</button>
+                <button type="button" class="btn btn-secondary" (click)="borrar()">Borrar</button>
+            </div>
+
+        </form>
+    </div>
+</div>

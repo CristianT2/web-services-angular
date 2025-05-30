@@ -38,12 +38,14 @@ export class ConversorPostService {
         'x-rapidapi-host': 'community-neutrino-currency-conversion.p.rapidapi.com',
         'Content-Type': 'application/x-www-form-urlencoded'
       }),
-      body: new HttpParams()
-        .set('from-value', value)
-        .set('from-type', from)
-        .set('to-type', to)
-    }
+    };
 
-    return this.httpClient.post(this.URL_API2, options);
+    //Media Type: Form_Data
+    const body = new HttpParams()
+    .set('from-value', value)
+    .set('from-type', from)
+    .set('to-type', to);
+
+    return this.httpClient.post(this.URL_API2, body.toString(), options);
   }
 }

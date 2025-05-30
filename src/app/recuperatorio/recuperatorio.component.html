@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Fotos</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div *ngFor="let foto of detalles">
+                        <img [src]="foto.photo_url_large" alt="Foto de muestra" style="width: 200px; height: auto;">
+                    </div>
+                    <!-- <div *ngFor="let piloto of pilotos" class="d-flex justify-content-between">
+                        <p>{{ piloto.name }}</p>
+                        <p>{{ piloto.position }}</p>
+                    </div> -->
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        (click)="salir()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mt-3 mb-3 mx-auto">
+        <div class="card bg-dark border-primary text-white">
+            <div class="card-body">
+                <form class="d-flex flex-column">
+                    <div class="mb-3">
+                        <label for="año" class="form-label fw-semibold">Año</label>
+                        <input type="text" id="año" class="form-control bg-dark text-white border-primary"
+                            [(ngModel)]="query" name="año" placeholder="Escribe la busqueda">
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex">
+                        <button class="btn btn-primary fw-semibold text-white w-50 mt-2" (click)="obtenerInformacion()">
+                            Obtener Carreras
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="informacion.length > 0" class="container mt-5">
+        <table class="table table-bordered border-black ">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Dueño</th>
+                    <th scope="col">Latitud Longitud</th>
+                    <th scope="col">Detalles</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let info of informacion">
+                    <td>{{ info.name}}</td>
+                    <td>{{ info.owner_name }}</td>
+                    <td>{{ info.latitude }} - {{ info.longitude }}</td>
+                    <td>
+                        <button class="btn btn-outline-info btn-sm ms-3" type="button" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" (click)="obtenerFotos(info.business_id)">Ver Detalles
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
